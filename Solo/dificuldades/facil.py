@@ -1,7 +1,8 @@
+from random import randint
+from time import sleep
 import os
-os.system("clear")
 
-def vencedor():
+def vencedor(interface, controladorDeJogadas):
     '''Verificara se há um vencedor no jogo, será verificado na seguinte sequência:
           Horizontais de cima pra baixo, denominadas como horizontal1, 2 e 3
           Verticais da esquerda para a direita< denominadas como vertical 1, 2 e 3 
@@ -61,8 +62,8 @@ def vencedor():
     elif controladorDeJogadas == 9:
         return True
 
-def jogador1():  # X
-    print('Jogador 1')
+def jogador(interface):
+    print('Jogador')
     while True:
         try:
             jogada = int(input('Colocar X na posição: '))
@@ -75,25 +76,27 @@ def jogador1():  # X
                 for i in range(0,3):
                     if jogada == interface[c][i]:
                         interface[c][i] = 'X'
-        break
+            break
 
-def jogador2():  # O
-    print('Jogador 2')
+def Cpu(interface): 
+    print('CPU')
+    print('Escolhendo posição...')
+    sleep(2.7)
     while True:
-        try:
-            jogada = int(input('Colocar O na posição: '))
-        except (ValueError, TypeError):
-            print('Erro! Por Favor digite um valor válido.')
+        z = False
+        jogadaCPU = randint(1, 9)
+        for c in range(0, 3):
+            for i in range(0, 3):
+                if jogadaCPU == interface[c][i]:
+                    interface[c][i] = jogadaCPU
+                    print(f'O computador escolheu a posição {jogadaCPU}')
+                    interface [c][i] = 'O'
+                    sleep(4.2)
+                    z = True  
+        if z:
+            break
 
-        except KeyboardInterrupt:
-            print('Jogo encerrado.')
-        else:
-            for c in range(0,3):
-                for i in range(0,3):
-                    if jogada == interface[c][i]:
-                        interface[c][i] = 'O'
-
-def interfaceDoJogo():
+def interfaceDoJogo(interface):
     # Interface inicial do jogo
     os.system("clear")
     print('--'*20)
@@ -103,45 +106,41 @@ def interfaceDoJogo():
         print()
         print('-'*15)
     print('--'*20)
+    
+def facil():
+    # Variável com os números das posições do jogo
+    interface = [ [1,2,3], [4,5,6] , [7,8,9] ]
 
+    # Repetição para alternar os turnos dos jogadores sendo jogador1 numeros pares e 
+    # jogador2 números ímpares
+    controladorDeJogadas = 0 
+    while True:
+        if vencedor(interface, controladorDeJogadas):
+            break
+        if controladorDeJogadas % 2 == 0:
+            interfaceDoJogo(interface)
+            jogador(interface)
+        else:
+            interfaceDoJogo(interface)
+            Cpu(interface)
+        controladorDeJogadas += 1
+    
+    # Varialvel que retornará uma mensagem de empate caso empate
+    draw = False
+    if controladorDeJogadas == 9:
+        draw = True
 
-
-# Programa Principal
-
-# Variável com os números das posições do jogo
-interface = [ [1,2,3], [4,5,6] , [7,8,9] ]
-
-# Repetição para alternar os turnos dos jogadores sendo jogador1 numeros pares e 
-# jogador2 números ímpares
-controladorDeJogadas = 0 
-while True:
-    if vencedor():
-        break
-    if controladorDeJogadas % 2 == 0:
-        interfaceDoJogo()
-        jogador1()
-    else:
-        interfaceDoJogo()
-        jogador2()
-    controladorDeJogadas += 1
-
-
-# Varialvel que retornará uma mensagem de empate caso empate
-draw = False
-if controladorDeJogadas == 10:
-    draw = True
-
-interfaceDoJogo()
-# Verificador do vencedor
-if draw :
-    print('=='*21)
-    print('EMPATE!!')
-    print('=='*21)
-elif controladorDeJogadas % 2 == 0:
-    print('=='*21)
-    print('O JOGADOR 2 VENCEU!!')
-    print('=='*21)
-elif controladorDeJogadas % 2 != 0:
-    print('=='*21)
-    print('O JOGADOR 1 VENCEU!!')
-    print('=='*21)
+    interfaceDoJogo(interface)
+    # Verificador do vencedor
+    if draw :
+        print('=='*21)
+        print('EMPATE!!')
+        print('=='*21)
+    elif controladorDeJogadas % 2 == 0:
+        print('=='*21)
+        print(f'{"DERROTA".center(40)}')
+        print('=='*21)
+    elif controladorDeJogadas % 2 != 0:
+        print('=='*21)
+        print(f'{"VITÓRIA".center(40)}')
+        print('=='*21)
