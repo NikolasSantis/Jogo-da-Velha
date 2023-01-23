@@ -100,7 +100,7 @@ def interfaceDoJogo(interface):
     print('--'*20)
     for c in range(0,3):
         for i in range(0,3):
-            print(f'| {interface[c][i]} |',end='')
+            print(f'| {interface[c][i]} |'.center(40),end='')
         print()
         print('-'*15)
     print('--'*20)
@@ -135,13 +135,13 @@ def VersusPlayer():
     # Verificador do vencedor
     if draw :
         print('=='*21)
-        print('EMPATE!!')
+        print('EMPATE!!'.center(40))
         print('=='*21)
     elif controladorDeJogadas % 2 == 0:
         print('=='*21)
-        print('O JOGADOR 2 VENCEU!!')
+        print('O JOGADOR 2 VENCEU!!'.center(40))
         print('=='*21)
     elif controladorDeJogadas % 2 != 0:
         print('=='*21)
-        print('O JOGADOR 1 VENCEU!!')
+        print('O JOGADOR 1 VENCEU!!'.center(40))
         print('=='*21)

@@ -102,7 +102,7 @@ def interfaceDoJogo(interface):
     print('--'*20)
     for c in range(0,3):
         for i in range(0,3):
-            print(f'| {interface[c][i]} |',end='')
+            print(f'| {interface[c][i]} |'.center(40),end='')
         print()
         print('-'*15)
     print('--'*20)
@@ -134,13 +134,13 @@ def facil():
     # Verificador do vencedor
     if draw :
         print('=='*21)
-        print('EMPATE!!')
+        print('EMPATE!!'.center(40))
         print('=='*21)
     elif controladorDeJogadas % 2 == 0:
         print('=='*21)
-        print(f'{"DERROTA".center(40)}')
+        print('DERROTA'.center(40))
         print('=='*21)
     elif controladorDeJogadas % 2 != 0:
         print('=='*21)
-        print(f'{"VITÓRIA".center(40)}')
+        print('VITÓRIA!!'.center(40))
         print('=='*21)
