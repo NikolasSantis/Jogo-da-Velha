@@ -99,10 +99,9 @@ def interfaceDoJogo(interface):
     os.system("clear")
     print('--'*20)
     for c in range(0,3):
-        for i in range(0,3):
-            print(f'| {interface[c][i]} |'.center(40),end='')
-        print()
-        print('-'*15)
+        print(f'| {interface[c][0]} |'.rjust(15), end='')
+        print(f'| {interface[c][1]} |'.center(5), end='')
+        print(f'| {interface[c][2]} |')
     print('--'*20)
 
 

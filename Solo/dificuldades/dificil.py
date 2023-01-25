@@ -346,7 +346,7 @@ def inicioCanto(interface, controladorDeJogadas):
     print(f'A CPU escolheu a posição {Jogada}')
     sleep(3.6)
 
-    #  80% concluído
+    #  concluído
 
 
 def inicioCentro(interface, controladorDeJogadas):
@@ -569,7 +569,7 @@ def inicioCentro(interface, controladorDeJogadas):
     print(f'A CPU escolheu a posição {Jogada}')
     sleep(3.6)
 
-    # 80% cocluído
+    # cocluído
 
 
 def inicioBorda(interface, controladorDeJogadas):
@@ -773,7 +773,7 @@ def inicioBorda(interface, controladorDeJogadas):
     print(f'A CPU escoleu a posição {Jogada}')
     sleep(3.6)
 
-    # 80% concluído
+    # concluído
 
 
 def interfaceDoJogo(interface):
