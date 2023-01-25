@@ -655,32 +655,37 @@ def inicioBorda(interface, controladorDeJogadas):
             defesa_3 = [ interface[1][2], interface[0][0], interface[2][0] ]
             defesa_4 = [ interface[2][1], interface[0][0], interface[0][2] ]
 
-            if defesa_1[1] == 'X':
-                Jogada = interface[0][0]
-                interface[0][0] = 'O'
-            elif defesa_1[2] == 'X':
-                Jogada = interface[0][2]
-                interface[0][2] = 'O'
+            if defesa_1.count('X') == 2:
+                if defesa_1[1] == 'X':
+                    Jogada = interface[0][0]
+                    interface[0][0] = 'O'
+                elif defesa_1[2] == 'X':
+                    Jogada = interface[0][2]
+                    interface[0][2] = 'O'
             
-            elif defesa_2[1] == 'X':
-                Jogada = interface[0][0]
-                interface[0][0] = 'O'
-            elif defesa_2[2] == 'X':
-                Jogada = interface[2][0]
+            elif defesa_2.count('X') == 2:
+                if defesa_2[1] == 'X':
+                    Jogada = interface[0][0]
+                    interface[0][0] = 'O'
+                elif defesa_2[2] == 'X':
+                    Jogada = interface[2][0]
+                    interface[2][0] = 'O'
             
-            elif defesa_3[1] == 'X':
-                Jogada = interface[0][2]
-                interface[0][2] = 'O'
-            elif defesa_3[2] == 'X':
-                Jogada = interface[2][2]
-                interface[2][2] = 'O'
+            elif defesa_3.count('X') == 2:
+                if defesa_3[1] == 'X':
+                    Jogada = interface[0][2]
+                    interface[0][2] = 'O'
+                elif defesa_3[2] == 'X':
+                    Jogada = interface[2][2]
+                    interface[2][2] = 'O'
             
-            elif defesa_4[1] == 'X':
-                Jogada = interface[2][0]
-                interface[2][0] = 'O'
-            elif defesa_4[2] == 'X':
-                Jogada = interface[2][2]
-                interface[2][2] = 'O'
+            elif defesa_4.count('X'):
+                if defesa_4[1] == 'X':
+                    Jogada = interface[2][0]
+                    interface[2][0] = 'O'
+                elif defesa_4[2] == 'X':
+                    Jogada = interface[2][2]
+                    interface[2][2] = 'O'
 
         # Se não ocorrer nenhuma das opções anteriores
         if Jogada == '.':
@@ -784,10 +789,9 @@ def interfaceDoJogo(interface):
     os.system("clear")
     print('--'*20)
     for c in range(0,3):
-        for i in range(0,3):
-            print(f'| {interface[c][i]} |'.center(40),end='')
-        print()
-        print('-'*15)
+        print(f'| {interface[c][0]} |'.rjust(15), end='')
+        print(f'| {interface[c][1]} |'.center(5), end='')
+        print(f'| {interface[c][2]} |')
     print('--'*20)
 
 
